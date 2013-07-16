@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Python</title>
+
+        <meta name="description" content="@TODO">
+        <meta name="author" content="Jean-Philippe Caissy">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section>
+                    <p>
+                        <img src="images/xkcd-python.png" alt="Obligatory XKCD"/>
+                    </p>
+                    <small>Source: <a href="http://xkcd.com/353/" target="_blakn">XKCD</a></small>
+                </section>
+
+                <section>
+                    <h1>Python</h1>
+                    <p>
+                        <small>Présenté par <a href="mailto:jpcaisys@piji.ca">Jean-Philippe Caissy</a> / <a href="http://twitter.com/jpcaissy">@jpcaissy</a></small>
+                    </p>
+                </section>
+
+                <section>
+                    <h1>Qui suis-je ?</h1>
+                    <p>Développeur Python<br />
+                    Étudiant au bac<br />
+                    Vice-Président de Montréal-Python<br />
+                    Organisateur de PyCon<br />
+                    </p>
+                </section>
+
+                <section>
+
+                <h2>Qu'est-ce que Python?</h2>
+                    <ul>
+                        <li class="fragment">Langage interprété comme Node, Ruby, PHP, etc</li>
+                        <li class="fragment">C'est une norme, plusieurs implémentations (CPython, Jython, IronPython, PyPy)</li>
+                        <li class="fragment">Orienté objet</li>
+                        <li class="fragment">Mature : plus de 20 d'âge</li>
+                        <li class="fragment">Multiplateforme</li>
+                        <li class="fragment">Garbage Collector</li>
+                        <li class="fragment">Console interactive!</li>
+                        <li class="fragment"><em>Batteries-included</em></li>
+                        <li class="fragment">Utilisé par toute sorte d'industrie</li>
+                    </ul>
+                    <aside class="notes">
+                    Industrie : jeux vidéos pour les engins de script, agences web, la recherche, data mining, etc<br />
+                    Plus grande compagnie qui engagent des développeurs python : Google !
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Console</h2>
+                    <p>Python vient avec une console interactive.<br />
+                    </p>
+                    <p class="fragment">Démonstration rapide!</p>
+                </section>
+
+                <section>
+                    <h2>Syntaxe</h2>
+                    <ul>
+                        <li class="fragment">Aucun <em>curly-braces { ou }</em>!</li>
+                        <li class="fragment">L'indentation sert à délimiter les blocs de code, comme en CoffeeScript.</li>
+                    <ul>
+                    <pre class="fragment"><code data-trim contenteditable>
+if taille > 50:
+    print "Plus grand que 50"
+else:
+    while taille <= 50:
+        print taille
+        taille -= 1
+
+                    </code></pre>
+
+                </section>
+
+                <section>
+                    <section>
+                    <h2>Flot de contôle</h2>
+                    <ul>
+                        <li>if/elif/else</li>
+                        <li>for</li>
+                        <li>while</li>
+                    <ul>
+                    Une déclaration se termine avec un deux-point <strong>:</strong>
+
+                    </section>
+                    <section><h3>if/elif/else</h3>
+                    <pre><code data-trim contenteditable>
+if condition1:
+    #faire quelquechose
+elif condition2:
+    #faire autre chose
+elif condition3:
+    #faire 3e chose
+else:
+    #sinon ...
+</code></pre>
+                    </section>
+                    <section>
+                    <h3>while</h3>
+
+                    <pre><code data-trim contenteditable>
+i = 0
+while i < 10:
+    i += 1
+
+print i #affiche 10
+</code></pre>
+                    </section>
+
+                    <section>
+                    <h3>for</h3>
+                    <p>
+                    Il n'y pas de boucle for comme en C ou java avec déclaration d'entier et incrément (<code>for i = 0; i < 10; ++i</code>)<br />
+                    On utilise <code>for</code> pour naviguer dans des listes.<br />
+                    Avec la méthode <code>range</code>, on peut créer une liste de 0 à x éléments :
+                    <pre><code data-trim contenteditable>
+for i in range(10):
+    print i
+    #va afficher les chiffres de 1 à 9
+for i in range(10, 20):
+    print i
+    #va afficher les chiffres de 10 à 19
+</code></pre>
+                    </p>
+                    </section>
+                    <section>
+                    <code>range</code> crée une liste (un tableau) d'éléments
+                    <pre><code data-trim contenteditable>
+>>> range(10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+                    <p>donc ... <code>for</code> itère sur des listes!</p>
+                    <pre><code data-trim contenteditable>
+for i in [0, 1, 2, 3, 4]:
+    print i
+    #affiche les nombres de 0 à 4
+</code></pre>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Types de données</h2>
+                    <p>En Python, tout est objet. <br />Chaque type de donnée est en fait un objet.</p>
+                    
+                    <ul>
+                        <li>Bool: True/False</li>
+                        <li>Integer: 1, 2, 3, etc<br />
+                        Aucune limite sur les entiers.</li>
+                        <li>Float (IEEE 754)</li>
+                        <li>Decimal: nombre flottants à valeurs fixes</li>
+                        <li>String : chaîne de caractère ASCII</li>
+                        <li>Unicode: chaîne de caractère unicode</li>
+                        <li>Liste/Tableau : <code>[1, True, "123"]</code></li>
+                        <li>Dictionnaire : <code>{'cle 1': 123, 123: 'valeur 2'}</code>
+                        <li>Tuples : <code>('A', 'B', 'C', 12)</code>
+                    </ul>
+                </section>
+                <section>
+                <h2>String</h2>
+                    <p>Il est recommendé de toujours utiliser des unicodes au lieu de strings. Avec Python 3.x, les strings n'existent plus, tout est unicode.</p><br />
+                    <p>Une chaîne de caractère est en fait un tableau de caractère.</p>
+                    <pre><code data-trim contenteditable>
+chaine = "INF4375-20"
+print chaine[2] #Affiche la lettre 'F'
+print chaine[-1] #Affiche le chiffre '0'
+
+print chaine.lower() #affiche "inf4375-20"
+print "foobar".upper() #affiche "FOOBAR"
+
+#pour déclarer un string unicode, on ajoute le u
+chaine = u"chaîne de caractère en unicode"
+</code></pre>
+
+                </section>
+                <section>
+                <h2>String</h2>
+                La concaténation de chaîne peut se faire de plusieurs manière, mais le plus pythonesque est :
+                    <pre><code data-trim contenteditable>
+prenom = "Jean-Philippe"
+print "Bonjour %s" % prenom
+
+nom = "Caissy"
+print "Re bonjour %s %s" % (prenom, nom)
+#(prenom, nom) est un tuple d'éléments
+</code></pre>
+                </section>
+                <section>
+                    <h2>List</h2>
+                    <pre><code data-trim contenteditable>
+ma_liste = [1, 'b', 'c']
+if 'b' in ma_liste:
+    print "'b' se trouve dans ma_liste"
+
+ma_liste.append('2')
+print ma_liste #[1, 'b', 'c', '2']
+
+ma_liste.pop()
+print ma_liste #[1, 'b', 'c', '2']
+print ma_liste[1] #Affiche 'b'
+
+new_liste =  ma_liste[0:3] #Retourne les éléments de l'index 0 à 2!
+print new_liste #[1, 'b', 'c']
+
+print ma_liste[2:] #Affiche les éléments de l'index 2 à la fin
+print ma_liste[:2] #Affiche les éléments du début à l'index 1
+</code></pre>
+                </section>
+                <section>
+                    <h2>Dictionnaires</h2>
+                    <pre><code data-trim contenteditable>
+cle = 567
+mon_dict = {
+    'abc': True,
+    123: 'def',
+    cle: ['1', '2', '3']
+}
+
+print mon_dict['abc'] #retourne True
+mon_dict[123] = 'fed'
+
+del mon_dict['abc'] #supprime la clé 'abc'
+
+</code></pre>
+                </section>
+                <section>
+                    <h2>Tuple</h2>
+                    <p>Un tuple est une liste immuable : une fois défini on ne peut pas rajouter ou supprimer d'éléments.</p>
+                    <pre><code data-trim contenteditable>
+valeurs = ('patate', 'foobar', 123)
+print valeurs[1] #affiche 'foobar'
+
+valeurs[3] = 'abc' #Erreur
+valeurs[2] = 'abc' #OK, car l'index 2 est définit
+</code></pre>
+                </section>
+            </section>
+                <section>
+                    <section>
+                        <h2>Méthodes</h2>
+                        <pre><code data-trim contenteditable>
+def ma_methode(param_1):
+    if param_1:
+        print u"param_1 est défini"
+
+def autre_methode():
+    ma_methode(true)
+    ma_methode(param_1='Patate')
+</code></pre>
+                    </section>
+                    <section>
+                        <p>Une méthode peut avoir un nombre indéfini de paramètres</p>
+                        <pre><code data-trim contenteditable>
+def faire_qqchose(param1, *args):
+    print param1, args
+
+faire_qqchose('foobar', 'patate', 123)
+#Affiche 'foobar' ['patate', 123]
+</code></pre>
+<code>args</code> va contenir une liste de tous les paramètres supplémentaires que la méthode reçoit.
+                    </section>
+                    <section>
+                        <p>Une méthode peut avoir un nombre indéfini de paramètres nommés !</p>
+                        <pre><code data-trim contenteditable>
+def faire_qqchose(param1, **kwargs):
+    print param1, kwargs
+
+faire_qqchose('foobar', cours='INF4375', groupe='20')
+#Affiche 'foobar' {'cours': 'INF4375', 'groupe'='20'}
+</code></pre>
+<code>kwargs</code> va contenir un dictionnaire de tous les paramètres nommées passé à la méthode.
+                    </section>
+                    <section>
+                    <p>On peut mélanger les deux !</p>
+                        <pre><code data-trim contenteditable>
+def faire_qqchose(param1, *args, **kwargs):
+    print param1, args, kwargs
+
+faire_qqchose('foobar', 42, 'hello', cours='INF4375', groupe='20')
+#Affiche 'foobar' [42, 'hellp'] {'cours': 'INF4375', 'groupe'='20'}
+</code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Les classes/objets</h2>
+                    </section>
+                    <section>
+                        <pre><code data-trim contenteditable>
+class Personne:
+    nom = "Jean-Philippe"
+    courriel = "jpcaissy@piji.ca"
+
+    def afficher_nom(self):
+        print "%s <%s>" % (nom, courriel)
+</code></pre>
+                    <p>Vous remarquerez qu'on passe l'instance de la classe comme premier paramètre (self).
+                    La norme est d'utilisé <code>self</code> mais ça peut être n'importe quel nom de paramètre.</p>
+                    <pre><code data-trim contenteditable>
+moi = Personne()
+afficher_nom() #Affiche Jean-Philippe &ltjpcaissy@piji.ca&gt;
+</code></pre>
+                    <pre><code data-trim contenteditable>
+moi.nom = "Jacques Berger"
+moi.courriel = "berger.jacques@uqam.ca"
+afficher_nom()
+</code></pre>
+                </section>
+                <section>
+                <h2>Héritage de classe</h2>
+                    <pre><code data-trim contenteditable>
+class Employe(Personne):
+    def afficher_employe(self):
+        print self.nom
+
+emp = Employe()
+emp.afficher_employe()
+emp.afficher_nom()
+</code></pre>
+                <p>Python supporte l'héritage multiple!</p>
+                </section>
+                <section>
+                    <h2>Méthodes magiques</h2>
+                    <pre><code data-trim contenteditable>
+class Employe(Personne):
+    def __init__(self, param1):
+        #Constructeur
+    def __str__(self):
+        #Cast vers un string
+    def __unicode__(self):
+        #Cast vers un unicode
+    def __eq__(self, other)
+        #surcharge opérateur égalité
+    def __lt__(self, other)
+        #surcharge opérateur plus petit que &lt;
+        [...]
+    def __set__(self, instance, value)
+        #Assignation d'attribut de classe
+    def __get__(self, instance, owner)
+        #Récupérer un attribut d'une classe
+</code></pre>
+                <p>Plusieurs objets ont des méthodes particulièrs.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                <h2>Modules</h2>
+                <p>En python, un module est un fichier contenant des attributs.</p>
+                <h4>foobar.py</h4>
+                <pre><code data-trim contenteditable>
+class ObjetFoobar():
+    pass
+</code></pre>
+<h4>patate.py<h4>
+                <pre><code data-trim contenteditable>
+class PatatesFrites():
+    pass
+</code></pre>
+<h4>Autre fichier dans le même dossier</h4>
+                <pre><code data-trim contenteditable>
+import patate
+from foobar import ObjetFoobar
+
+frites = patate.PatatesFrites()
+foo = ObjetFoobar()
+</code></pre>
+                </section>
+            </section>
+            <section>
+                <h2>Framework Web</h2>
+                <p>Il existe une multitude de framework web en Python : 
+                <ul>
+                    <li>Django</li>
+                    <li>Pyramid</li>
+                    <li>web2py</li>
+                    <li>CherryPy</li>
+                    <li>Flask</li>
+                    <li>Turbogears</li>
+                    <li>...</li>
+                </ul>
+                <p>Ces frameworks existent pour simplifier le développement d'applications web.</p>
+                <p>Pour cette présentation, je vais vous montrer Flask.</p>
+            </section>
+            <section>
+                <h2>Flask</h2>
+                <p>
+                    <img src="images/flask.png" alt="Flask logo" /><br />
+                    <a href="http://flask.pocoo.org/">http://flask.pocoo.org/</a><br />
+                    Framework de développement web très léger, mais complet.
+                    </p>
+            </section>
+            <section>
+                <p>Créer un applicaation Flask est aussi simple que : </p>
+                <pre><code data-trim contenteditable>
+from flask import Flask
+app = Flask("Presentation Python")
+
+@app.route("/")
+def hello():
+    return "Boujour classe"
+
+if __name__ == "__main__":
+    app.run()
+</code></pre>
+                </section>
+                <section>
+                    <p>L'architecture de Flask est très souple et permet de rajouter et remplacer au besoin les différents composants : 
+                    <ul>
+                        <li>Débuggeur intégré</li>
+                        <li>Générateur d'interface d'administration</li>
+                        <li>Gestion de session</li>
+                        <li>ORM</li>
+                        <li>Gestion de session</li>
+                        <li>Engin de templating</li>
+                        <li>etc</li>
+                    </ul>
+                </section>
+                <section>
+                    <section>
+                        <h2>Routing</h2>
+                        <p>Les routes sont géré pas le décorateur <code>@route</code> du module <code>app</code> qui est ajouté à une méthode.</p>
+                    <pre><code data-trim contenteditable>
+@app.route("/"):
+def index():
+    return "Page d'accueil"
+
+@app.route("/hello"):
+def hello():
+    return "Bonjour inconnu"
+
+@app.route("/hello/&lt;name&gt;")
+def hello(name):
+    return "Bonjour %s" % name
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Méthodes</h2>
+                        <p>Il est possible de préciser les méthodes à laquelle une route répond</p>
+                   <pre><code data-trim contenteditable>
+@app.route("/login", methods=['GET', 'POST]):
+def login(name):
+    if request.method == "POST":
+        faire_la_connexion()
+    else:
+        afficher_formulaire_connexion()
+</code></pre>
+                        <p>Méthodes reconnues : GET, HEAD, POST, PUT, DELETE, OPTIONS</p>
+
+                    </section>
+                </section>
+                <section>
+                    <h2>Template</h2>
+                    <p>Par défaut Flask utilise l'engin de templating <a href="http://jinja.pocoo.org/docs/" target="_blank">Jinja2</a>. Il est possible d'en utiliser un autre, mais je l'aime particulièrement.</p>
+                    <p>À la différence de Jade, on écrit du HTML, mais on rajoute des bouts de codes propre au langage du template.</p>
+                </section>
+                <section>
+                    <p>Voici un exmple de template Jinja2</p>
+                    <h4>bonjour.html:</h4>
+                   <pre><code data-trim contenteditable>
+&lt;!doctype html&gt;
+<title>Bonjour de flask</title>
+{% if name %}
+  <h1>Bonjour {{ name }} !</h1>
+{% else %}
+  <h1>Bonjour inconnu !</h1>
+{% endif %}
+</code></pre>
+                    <pre><code data-trim contenteditable>
+from flask import render_template
+
+@app.route("/hello/"):
+@app.route("/hello/&lt;name&gt;")
+def hello(name=None):
+    return render_template("bonjour.html", name=name)
+</code></pre>
+
+
+                </section>
+                <section>
+                    <h2>Base de donnée</h2>
+                    <p>Une application sans base de donnée, ça ne sert pas à grand chose!<br />Plusieurs ORM (Object Relation Manager):</p>
+                    <p>
+                    <ul>
+                        <li>SQLAlchemy : Mysql, Postgesql, Sqlite, MongoDB</li>
+                        <li>MongoEngine : MongoDB</li>
+                        <li>Peewee: Mysql, Postgresql, Sqlite</li>
+                    </ul></p>
+                    <p>Mon coup de coeur est MongoEngine, mais SQLAlchemy est le plus populaire.</p>
+                </section>
+                <section>
+                    <h2>MongoEngine</h2>
+                    <p>Comme le nom le dit, MongoEngine est un ORM pour MongoDB. L'intégration dans Flask est très facile : <p>
+                    <pre><code data-trim contenteditable>
+from flask import Flask
+from flask.ext.mongoengine import MongoEngine
+app = Flask("Presentation Python")
+
+app.config['MONGODB_SETTINGS'] = {'DB': 'presentation_python'}
+db = MongoEngine(app)
+
+@app.route("/")
+def hello():
+    return "Boujour classe"
+
+if __name__ == "__main__":
+    app.run()
+</code></pre>
+            <p>Bien-sûr, un ORM n'est pas utile si on ne déclare pas nos modèles.</p>
+            </section>
+            <section>
+                <h2>Modèle MongoEngine</h2>
+                <p>Modélisons un blog!</p>
+                    <pre><code data-trim contenteditable>
+from mongoengine import (
+    Document, EmbeddedDocument, EmbeddedDocumentField,
+    StringField, ListField, EmailField)
+
+class Author(EmbeddedDocument):
+    name = StringField(required=True, max_length=160)
+    email = EmailField()
+
+class Comment(EmbeddedDocument):
+    name = StringField(max_length=60)
+    comment = StringField(required=True)
+
+class Blog(Document):
+    titre = StringField(required=True, max_length=60)
+    tags = ListField(StringField(max_length=30))
+    auteur = EmbeddedDocumentField(Author)
+    comments = ListField(EmbeddedDocumentField(Comment))
+</code></pre>
+            </section>
+            <section>
+            <h2>Section d'administration</h2>
+            <p>Une fois notre modèle créé, nous pouvons très rapidement commencer à gérer les documents!<br />
+            Plusieurs interfaces d'administrations existent pour Flask. Essayons Flask-SuperAdmin.</p>
+            </section>
+            <section>
+            <h2>Flask-SuperAdmin</h2>
+            <a href="https://flask-superadmin.readthedocs.org/en/latest/" target="_blank">Site officiel</a>
+            <p>Intégrer Flask-SuperAdmin est très simple.</p>
+                    <pre><code data-trim contenteditable>
+from flask import Flask
+from flask.ext.mongoengine import MongoEngine
+from flask.ext.superadmin import Admin
+from mongoengine import (
+    Document, EmbeddedDocument, EmbeddedDocumentField,
+    StringField, ListField, EmailField)
+
+class Author(EmbeddedDocument):
+    name = StringField(required=True, max_length=160)
+    email = EmailField()
+
+class Comment(EmbeddedDocument):
+    name = StringField(max_length=60)
+    comment = StringField(required=True)
+
+class Blog(Document):
+    titre = StringField(required=True, max_length=60)
+    tags = ListField(StringField(max_length=30))
+    auteur = EmbeddedDocumentField(Author)
+    comments = ListField(EmbeddedDocumentField(Comment))
+
+app = Flask("Presentation Python")
+
+app.config['MONGODB_SETTINGS'] = {'DB': 'presentation_python'}
+app.config['SECRET_KEY'] = "12345"
+db = MongoEngine(app)
+
+admin = Admin(app)
+admin.register(Blog)
+
+if __name__ == "__main__":
+    app.run()
+</code></pre>
+
+            </section>
+            <section>
+                <p>Voyons de quoi cela à de l'air !</p>
+                <p class="fragment">Bien-sûr, il manquerait un formulaire de connexion pour s'authentifier.</p>
+            </section>
+            <section>
+            <h2>Service REST</h2>
+            <p>Avec une interface d'administration, il ne nous manque qu'un service REST !</p>
+            </section>
+            <section>
+                    <pre><code data-trim contenteditable>
+from flask import Flask
+from flask.ext.mongoengine import MongoEngine
+from flask.ext.superadmin import Admin
+from flask.ext.mongorest import MongoRest
+from flask.ext.mongorest.views import ResourceView
+from flask.ext.mongorest.resources import Resource
+from flask.ext.mongorest import operators as ops
+from flask.ext.mongorest import methods  
+
+from mongoengine import (
+    Document, EmbeddedDocument, EmbeddedDocumentField,
+    StringField, ListField, EmailField)
+
+class Author(EmbeddedDocument):
+    name = StringField(required=True, max_length=160)
+    email = EmailField()
+
+class Comment(EmbeddedDocument):
+    name = StringField(max_length=60)
+    comment = StringField(required=True)
+
+class Blog(Document):
+    titre = StringField(required=True, max_length=60)
+    tags = ListField(StringField(max_length=30))
+    auteur = EmbeddedDocumentField(Author)
+    comments = ListField(EmbeddedDocumentField(Comment))
+
+class BlogResource(Resource):
+    document = Blog
+
+app = Flask("Presentation Python")
+
+app.config['MONGODB_SETTINGS'] = {'DB': 'presentation_python'}
+app.config['SECRET_KEY'] = "12345"
+db = MongoEngine(app)
+
+admin = Admin(app)
+admin.register(Blog)
+
+
+@api.register(name='blogs', url='/blog/')
+class BlogView(ResourceView):
+    resource = PostResource
+    methods = [methods.Create, methods.Update, methods.Fetch, methods.List]
+
+if __name__ == "__main__":
+    app.run()
+</code></pre>
+            </section>
+            <section>
+            <h2>Conclusoin</h2>
+            </section>
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
